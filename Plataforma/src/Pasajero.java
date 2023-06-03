@@ -11,7 +11,7 @@ public class Pasajero extends Usuario{
         tarjetas = new ArrayList<TarjetaCredito>();
     }
     public ArrayList<TarjetaCredito> getTarjetas(){
-        return tarjetas;
+        return (ArrayList<TarjetaCredito>) tarjetas.clone();
     }
 
     public void addTarjeta(TarjetaCredito tc){
@@ -20,7 +20,7 @@ public class Pasajero extends Usuario{
         }
     }
     public ArrayList<Compra> getCompras(){
-        return compras;
+        return (ArrayList<Compra>) compras.clone();
     }
     public void addCompra(Compra c){
         if (!compras.contains(c)){
