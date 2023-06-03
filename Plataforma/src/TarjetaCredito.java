@@ -33,4 +33,11 @@ public class TarjetaCredito {
     public void setMarca(String marca) {
         this.marca = marca;
     }
+    public boolean equals(TarjetaCredito tarjeta){
+        if(getNumero() == tarjeta.getNumero()){
+            return true;
+        }else{
+            return false;
+        }
+    }
 }

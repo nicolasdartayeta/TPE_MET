@@ -4,27 +4,33 @@ public class Usuario {
     private String claveAcceso;
     private int dni;
 
+    public Usuario(String nombre, String apellido, String claveAcceso, int dni){
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.claveAcceso = claveAcceso;
+    }
     public String getNombre(){
-
+        return nombre;
     }
     public String getApellido() {
-
+        return apellido;
     }
     public String getClaveAcceso(){
-
+        return claveAcceso;
     }
     public int getDni(){
-
+        return dni;
     }
-    public String setNombre(){
-
+    public void setNombre(String nombre){
+        this.nombre = nombre;
     }
-    public String setClaveAcceso(){
-
+    public void setClaveAcceso(String claveAcceso){
+        this.claveAcceso = claveAcceso;
     }
-    public String setApellido(){
+    public void setApellido(String apellido){
+        this.apellido = apellido;
     }
-    public int setDni{
-
+    public void setDni(int dni){
+        this.dni = dni;
     }
 }
