@@ -4,10 +4,10 @@ public class Usuario {
     private String apellido;
     private String claveAcceso;
     private int dni;
-    public Usuario(){
+
+    public String getNombre(){
 
     }
-    public String getNombre():
     public String getApellido() {
 
     }
