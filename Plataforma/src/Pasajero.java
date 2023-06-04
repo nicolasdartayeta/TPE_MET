@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import java.util.ArrayList;
 
 public class Pasajero extends Usuario{
@@ -28,4 +29,8 @@ public class Pasajero extends Usuario{
         }
     }
 
+=======
+public class Pasajero {
+    
+>>>>>>> compra
 }

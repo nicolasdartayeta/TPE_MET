@@ -4,6 +4,7 @@ public class Usuario {
     private String claveAcceso;
     private int dni;
 
+<<<<<<< HEAD
     public Usuario(String nombre, String apellido, String claveAcceso, int dni){
         this.nombre = nombre;
         this.apellido = apellido;
@@ -32,5 +33,29 @@ public class Usuario {
     }
     public void setDni(int dni){
         this.dni = dni;
+=======
+    public String getNombre(){
+
+    }
+    public String getApellido() {
+
+    }
+    public String getClaveAcceso(){
+
+    }
+    public int getDni(){
+
+    }
+    public String setNombre(){
+
+    }
+    public String setClaveAcceso(){
+
+    }
+    public String setApellido(){
+    }
+    public int setDni{
+
+>>>>>>> compra
     }
 }

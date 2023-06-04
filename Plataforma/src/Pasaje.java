@@ -1,5 +1,6 @@
 public class Pasaje {
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 
 >>>>>>> 92686f5cafae40384c6ae10b8fa9885d00bd7c3e
@@ -40,4 +41,32 @@ public class Pasaje {
         return precio;
     }
 >>>>>>> 92686f5cafae40384c6ae10b8fa9885d00bd7c3e
+=======
+    int numeroAsiento;
+    Pasajero pasajero;
+    Servicio servicio;
+    int precio;
+    
+    public int getNumAsiento(){
+        return  servicio.getAsiento();
+    }
+    public Pasajero getPasajero(){
+        return pasajero;
+    }
+
+    public Servicio getServicio(){
+        return  servicio;
+    }
+    public int getPrecio(){
+        return precio;
+    }
+    
+    public void setPasajero(Pasajero newPasajero){
+        pasajero = newPasajero;
+    }
+
+    public void setPrecio(int newPrecio){
+        precio = newPrecio;
+    }
+>>>>>>> compra
 }
