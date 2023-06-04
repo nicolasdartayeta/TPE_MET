@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class Pasajero extends Usuario{
     private ArrayList<TarjetaCredito> tarjetas;
@@ -14,6 +15,13 @@ public class Pasajero extends Usuario{
         return (ArrayList<TarjetaCredito>) tarjetas.clone();
     }
 
+    public TarjetaCredito elegirTarjeta(){
+        ArrayList<TarjetaCredito> tarjetas = this.getTarjetas();
+        for(int i = 0; i < tarjetas.size(); i++){
+            System.out.println(i + "-" + tarjetas.get(i));
+        }
+        ///////////////////////////////////////////////////////////////
+    }
     public void addTarjeta(TarjetaCredito tc){
         if (!tarjetas.contains(tc)){
             tarjetas.add(tc);

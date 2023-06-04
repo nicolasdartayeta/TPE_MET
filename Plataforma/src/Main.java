@@ -1,17 +1,30 @@
-// Press Shift twice to open the Search Everywhere dialog and type `show whitespaces`,
-// then press Enter. You can now see whitespace characters in your code.
+import java.util.ArrayList;
+import java.util.Scanner;
+
 public class Main {
     public static void main(String[] args) {
-        // Press Alt+Intro with your caret at the highlighted text to see how
-        // IntelliJ IDEA suggests fixing it.
-        System.out.printf("Hello and welcome!");
+        Plataforma plataforma = new Plataforma();
+        Pasajero pasajero1 = new Pasajero("Fede", "gar", "1234", 33333333);
 
-        // Press Mayús+F10 or click the green arrow button in the gutter to run the code.
-        for (int i = 1; i <= 5; i++) {
+        TarjetaCredito tarjeta = new TarjetaCredito(1232131313, "Galicia", "aa");
+        pasajero1.addTarjeta(tarjeta);
 
-            // Press Mayús+F9 to start debugging your code. We have set one breakpoint
-            // for you, but you can always add more by pressing Ctrl+F8.
-            System.out.println("i = " + i);
+        Pasaje p1 = new Pasaje(10, 10);
+        p1.setPasajero(pasajero1);
+
+        ArrayList<Pasaje> lista = new ArrayList<Pasaje>();
+        lista.add(p1);
+
+
+        System.out.println("1 con tarjeta o 0 con credito");
+        Scanner scanner = new Scanner(System.in);
+        String input = scanner.nextLine();
+
+        if (input.equals("1")){ // TARJETA
+            plataforma.crearCompra(pasajero1, lista, pasajero1.elegirTarjeta());
+        }else  if (input.equals("0")){
+            plataforma.crearCompra(pasajero1, lista);
         }
+
     }
 }

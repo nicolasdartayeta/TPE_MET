@@ -1,13 +1,13 @@
 public class Pasaje {
     private int numeroAsiento;
     private Pasajero pasajero;
-    private Servicio servicio;
+    // private Servicio servicio;
     private int precio;
 
-    public Pasaje(int numeroAsiento, Servicio servicio, int precio) {
+    public Pasaje(int numeroAsiento, int precio) {
         this.numeroAsiento = numeroAsiento;
         this.pasajero = null;
-        this.servicio = servicio;
+        //this.servicio = servicio;
         this.precio = precio;
     }
 

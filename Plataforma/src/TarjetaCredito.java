@@ -40,4 +40,8 @@ public class TarjetaCredito {
             return false;
         }
     }
+
+    public String toString(){
+        return "Numero: " + numero + "- Banco:" + banco;
+    }
 }
