@@ -18,4 +18,7 @@ public class Compra {
     public boolean pagar(GestorPagos g){
         return g.procesarPago(this.tarjeta, this.monto);
     }
+    public String toString(){
+        return ("Pasajero: " + comprador.getNombre + "/ Cantidad de pasajes: " + pasajes.size() + "/ Monto: " + monto);
+    }
 }
