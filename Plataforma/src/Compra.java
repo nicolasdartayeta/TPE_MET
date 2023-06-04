@@ -28,8 +28,44 @@ public class Compra {
         this.tarjetaDeCredito = tarjetaDeCredito;
     }
 
-    public boolean equals(Compra c){ // NECESITO IMPLEMENTARLO :)
+    public ArrayList<Pasaje> getPasajes() {
+        return pasajes;
+    }
 
+    public Pasajero getComprador() {
+        return comprador;
+    }
+
+    public void imprimirResumen(){
+        System.out.println("-----RESUMEN DE COMPRA-------");
+        System.out.println("Nombre del Comprador: " + comprador.getNombre());
+        System.out.println("Cantidad de pasajes comprados: " + pasajes.size());
+        System.out.println("Monto total: " + monto);
+        System.out.print("Forma de pago: ");
+        if(tarjetaDeCredito == null){
+            System.out.println(" Creditos");
+        }else{
+            System.out.println(" Tarjeta("  + tarjetaDeCredito.getNumero()+ ")");
+        }
+        System.out.print("Estado: ");
+        if(pagado){
+            System.out.println("pagado");
+        }else{
+            System.out.println(" procesando pago"); // ??????????
+        }
+
+    }
+
+    public String toString(){
+        return ("Comprador: " + comprador.getNombre() + "/ Cantidad de pasajes: " + pasajes.size());
+    }
+
+    public boolean equals(Compra c){ // NECESITO IMPLEMENTARLO :)
+        if(getPasajes().containsAll(c.getPasajes())){
+            return true;
+        } else{
+            return false;
+        }
     }
 
 }

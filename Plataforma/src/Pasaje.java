@@ -13,9 +13,9 @@ public class Pasaje {
 
     public int getNumeroAsiento() {return numeroAsiento;}
     public Pasajero getPasajero() {return pasajero;}
-    public Servicio getServicio() {return servicio;}
+    // public Servicio getServicio() {return servicio;}
     public int getPrecio() {return precio;}
-    public void setPasajero(Pasajero pasajero) {this.Pasajero = pasajero;}
+    public void setPasajero(Pasajero pasajero) {this.pasajero = pasajero;}
     public void nuevoPrecio(int precio){ this.precio=precio;}
     public boolean isDisponible(){return this.pasajero == null;}
 }
