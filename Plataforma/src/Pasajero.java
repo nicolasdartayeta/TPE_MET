@@ -63,4 +63,22 @@ public class Pasajero extends Usuario{
         }
     }
 
+    public int getCreditoCompra(){
+        return this.creditoCompra;
+    }
+
+    // Devuelve true si se puede consumir el saldo indicado, falso si no alcanzan los creditos del pasajero.
+    public boolean consumirCredito(int monto){
+        if (monto < this.getCreditoCompra()) {
+            this.creditoCompra -= monto;
+            return true;
+        } else {
+            return false;
+        }
+
+    }
+
+    public void addCredito(int monto){
+        this.creditoCompra += monto;
+    }
 }

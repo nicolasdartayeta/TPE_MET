@@ -4,7 +4,7 @@ public class Compra {
     private Pasajero comprador;
     private ArrayList<Pasaje> pasajes;
     private TarjetaCredito tarjetaDeCredito;
-    private float monto;
+    private int monto;
     private boolean pagado;
 
     public Compra(Pasajero comprador,  ArrayList<Pasaje> pasajes) {
@@ -13,7 +13,7 @@ public class Compra {
         this.tarjetaDeCredito = null;
         this.pagado = false;
 
-        float aux = 0;
+        int aux = 0;
         for (int i = 0; i < pasajes.size(); i++){
             aux = aux + pasajes.get(i).getPrecio();
         }
@@ -52,13 +52,13 @@ public class Compra {
         if(pagado){
             System.out.println("pagado");
         }else{
-            System.out.println(" impago"); // ??????????
+            System.out.println(" impago");
         }
 
 
         System.out.println("Cantidad de pasajes comprados: " + pasajes.size());
         for (int i = 0; i < pasajes.size(); i++){
-            System.out.println("Pasaje " + i + " - Numero de asiento: " + pasajes.get(i).getNumeroAsiento() + " - Nombre del pasajero: " + pasajes.get(i).getPasajero().getNombre());
+            System.out.println("Pasaje - " + i + pasajes.get(i));
         }
     }
 
@@ -74,7 +74,20 @@ public class Compra {
         }
     }
 
-    public void comprar() {
-      // TODO implementar cuando se haga la feature de pagar compra
+    public void setMonto(int monto){
+        this.monto = monto;
+    }
+    public void pagarTarjeta(GestorPagos g) {
+        if (this.tarjetaDeCredito != null) {
+            this.pagado = g.procesarPago(this.tarjetaDeCredito, this.monto);
+        }
     };
+
+    public void pagarCredito(){
+        this. pagado = this.comprador.consumirCredito(this.monto);
+    }
+
+    public boolean getEstado(){
+        return pagado;
+    }
 }

@@ -1,20 +1,20 @@
 public class TarjetaCredito {
-    private double numero;
+    private Long numero;
     private String banco;
     private String marca;
 
-    public TarjetaCredito(double numero, String banco, String marca){
+    public TarjetaCredito(Long numero, String banco, String marca){
 
         this.numero = numero;
         this.banco = banco;
         this.marca = marca;
         
     }
-    public double getNumero() {
+    public long getNumero() {
         return numero;
     }
 
-    public void setNumero(double numero) {
+    public void setNumero(Long numero) {
         this.numero = numero;
     }
 

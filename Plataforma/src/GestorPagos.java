@@ -1,3 +1,3 @@
 public interface GestorPagos {
-    public abstract void procesarPago(TarjetaCredito t);
+    public abstract boolean procesarPago(TarjetaCredito t, Integer monto);
 }
