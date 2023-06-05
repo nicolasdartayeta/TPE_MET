@@ -39,16 +39,21 @@ public class Pasajero extends Usuario{
     }
 
     public Compra elegirCompra(){
-        for(int i = 0; i < compras.size(); i++){
-            System.out.println(i + "- " + compras.get(i));
-        }
-        System.out.print("Ingresar indice de compra a utilizar: ");
-        Scanner scanner = new Scanner(System.in);
-        int input = scanner.nextInt();
-        if (input >= 0 && input < tarjetas.size()){
-            return compras.get(input);
-        }else{
-            return this.elegirCompra();
+        if (compras.isEmpty()){
+            return null;
+        } else {
+            for (int i = 0; i < compras.size(); i++) {
+                System.out.println(i + "- " + compras.get(i));
+            }
+            System.out.print("Ingresar indice de compra a utilizar: ");
+            Scanner scanner = new Scanner(System.in);
+            int input = scanner.nextInt();
+
+            if (input >= 0 && input < tarjetas.size()) {
+                return compras.get(input);
+            } else {
+                return this.elegirCompra();
+            }
         }
     }
 
