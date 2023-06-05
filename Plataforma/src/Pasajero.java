@@ -51,6 +51,7 @@ public class Pasajero extends Usuario{
             return this.elegirCompra();
         }
     }
+
     public void addCompra(Compra c){
         if (!compras.contains(c)){
             compras.add(c);

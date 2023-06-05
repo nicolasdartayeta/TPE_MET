@@ -39,7 +39,6 @@ public class Compra {
     public void imprimirResumen(){
         System.out.println("-----RESUMEN DE COMPRA-------");
         System.out.println("Nombre del Comprador: " + comprador.getNombre());
-        System.out.println("Cantidad de pasajes comprados: " + pasajes.size());
         System.out.println("Monto total: " + monto);
         System.out.print("Forma de pago: ");
         if(tarjetaDeCredito == null){
@@ -53,7 +52,10 @@ public class Compra {
         }else{
             System.out.println(" procesando pago"); // ??????????
         }
-
+        System.out.println("Cantidad de pasajes comprados: " + pasajes.size());
+        for (int i = 0; i < pasajes.size(); i++){
+            System.out.println("Pasaje " + i + " - Numero de asiento: " + pasajes.get(i).getNumeroAsiento() + " - Nombre del pasajero: " + pasajes.get(i).getPasajero().getNombre());
+        }
     }
 
     public String toString(){
