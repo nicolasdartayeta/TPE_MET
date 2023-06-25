@@ -1,4 +1,6 @@
-public class TarjetaCredito {
+import java.io.Serializable;
+
+public class TarjetaCredito implements Serializable {
     private Long numero;
     private String banco;
     private String marca;

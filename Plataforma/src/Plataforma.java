@@ -1,14 +1,17 @@
+import java.io.*;
 import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Plataforma {
+    private static final File ARCHIVOUSUARIOS = new File("Plataforma/src/Archivos/Usuarios.ddr");
     private ArrayList<Pasajero> pasajeros;
 
-    public Plataforma (){
+    public Plataforma() {
         pasajeros = new ArrayList<Pasajero>();
+        this.cargarDatos();
     }
 
-    public Pasajero loginPasajero(){
+    public Pasajero loginPasajero() {
         System.out.print("Ingresar DNI: ");
         Scanner scanner = new Scanner(System.in);
         int inputDNI = Integer.parseInt(scanner.nextLine());
@@ -17,7 +20,7 @@ public class Plataforma {
 
         Pasajero logeado = existePasajero(inputDNI);
 
-        if (logeado != null){
+        if (logeado != null) {
             boolean datosCorrectos = chequearContrasenia(inputDNI, inputContrasenia);
 
             if (datosCorrectos)
@@ -34,8 +37,8 @@ public class Plataforma {
 
     }
 
-    private boolean chequearContrasenia(int inputDNI, String inputContrasenia){
-        for (Pasajero pasajero: pasajeros){
+    private boolean chequearContrasenia(int inputDNI, String inputContrasenia) {
+        for (Pasajero pasajero : pasajeros) {
             if (pasajero.getDni() == inputDNI)
                 if (pasajero.getClaveAcceso().equals(inputContrasenia))
                     return true;
@@ -45,13 +48,14 @@ public class Plataforma {
 
         return false;
     }
-    public boolean registrarPasajero(){
+
+    public boolean registrarPasajero() {
         System.out.println("Registrarse");
         System.out.print("Ingresar DNI: ");
         Scanner scanner = new Scanner(System.in);
         int inputDNI = Integer.parseInt(scanner.nextLine());
 
-        if (existePasajero(inputDNI) == null){
+        if (existePasajero(inputDNI) == null) {
             System.out.print("Ingresar nombre: ");
             Scanner scanner2 = new Scanner(System.in);
             String inputNombre = scanner2.nextLine();
@@ -73,8 +77,8 @@ public class Plataforma {
         }
     }
 
-    public Pasajero existePasajero(int dni){
-        for (Pasajero pasajero: pasajeros){
+    public Pasajero existePasajero(int dni) {
+        for (Pasajero pasajero : pasajeros) {
             if (pasajero.getDni() == dni)
                 return pasajero;
         }
@@ -82,21 +86,22 @@ public class Plataforma {
         return null;
     }
 
-    public Compra crearCompra(Pasajero comprador, ArrayList<Pasaje> pasajes, TarjetaCredito tarjeta){ //Se crea una compra utilizando una tarjeta de credito del comprador
+    public Compra crearCompra(Pasajero comprador, ArrayList<Pasaje> pasajes, TarjetaCredito tarjeta) { //Se crea una compra utilizando una tarjeta de credito del comprador
         Compra c1 = new Compra(comprador, pasajes);
         c1.setTarjetaDeCredito(tarjeta);
         return c1;
     }
-    public Compra crearCompra(Pasajero comprador, ArrayList<Pasaje> pasajes){     // Se crea una compra utilizando los creditos del comprador
+
+    public Compra crearCompra(Pasajero comprador, ArrayList<Pasaje> pasajes) {     // Se crea una compra utilizando los creditos del comprador
         Compra c1 = new Compra(comprador, pasajes);
         return c1;
     }
 
-    private boolean addPasajero(Pasajero pasajero){
+    private boolean addPasajero(Pasajero pasajero) {
         int dniUsuario = pasajero.getDni();
         boolean yaEstaReg = false;
 
-        for (Usuario u: pasajeros){
+        for (Usuario u : pasajeros) {
             if (u.getDni() == dniUsuario)
                 yaEstaReg = true;
         }
@@ -106,5 +111,26 @@ public class Plataforma {
             return true;
         } else
             return false;
+    }
+
+    private void cargarDatos(){
+        try (ObjectInputStream input = new ObjectInputStream(new FileInputStream(ARCHIVOUSUARIOS))) {       //CARGA TODOS LOS PASAJEROS
+            while(true){
+                Pasajero aux = (Pasajero) input.readObject();
+                this.addPasajero(aux);
+            }
+        } catch(ClassNotFoundException e){
+        }catch(EOFException e) {
+        }catch (IOException e) {
+        }
+    };
+    public void guardarDatos() {
+        try (ObjectOutputStream output = new ObjectOutputStream(new FileOutputStream(ARCHIVOUSUARIOS))) {       //GUARDA TODOS LOS PASAJEROS
+            for (Pasajero p : pasajeros) {
+                output.writeObject(p);
+            };
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 }

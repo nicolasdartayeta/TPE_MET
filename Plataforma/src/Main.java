@@ -30,6 +30,7 @@ public class Main {
                         System.out.println("REGISTRADO");
                     break;
                 default:
+                    plataforma.guardarDatos();
                     exit = true; // salir del programa
             }
 
@@ -78,7 +79,6 @@ public class Main {
                                 } else if (input == 1) {
                                     pasajeroLogueado.addCompra(plataforma.crearCompra(pasajeroLogueado, listaSeleccionados));
                                 }
-                                ;
                             } else {
                                 System.out.println("No se selecciono ningun pasaje");
                             }

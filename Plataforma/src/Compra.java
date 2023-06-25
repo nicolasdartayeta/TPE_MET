@@ -1,6 +1,7 @@
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Compra {
+public class Compra implements Serializable {
     private Pasajero comprador;
     private ArrayList<Pasaje> pasajes;
     private TarjetaCredito tarjetaDeCredito;
