@@ -137,8 +137,8 @@ public class Plataforma {
             try {
                 Path path = Path.of("Plataforma/src/Archivos");
                 Files.createDirectories(path);
-
                 ARCHIVOUSUARIOS.createNewFile();
+                this.guardarDatos();
             } catch (IOException ex) {
                 throw new RuntimeException(ex);
             }
