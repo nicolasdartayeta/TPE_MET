@@ -122,7 +122,9 @@ public class Plataforma {
         } catch(ClassNotFoundException e){
         }catch(EOFException e) {
         }catch (IOException e) {
+
         }
+
     };
     public void guardarDatos() {
         try (ObjectOutputStream output = new ObjectOutputStream(new FileOutputStream(ARCHIVOUSUARIOS))) {       //GUARDA TODOS LOS PASAJEROS
@@ -130,7 +132,11 @@ public class Plataforma {
                 output.writeObject(p);
             };
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            try {
+                ARCHIVOUSUARIOS.createNewFile();
+            } catch (IOException ex) {
+                throw new RuntimeException(ex);
+            }
         }
     }
 }
