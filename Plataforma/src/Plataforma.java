@@ -2,40 +2,42 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Plataforma {
-    private ArrayList<Usuario> usuarios;
+    private ArrayList<Pasajero> pasajeros;
 
     public Plataforma (){
-        usuarios = new ArrayList<Usuario>();
+        pasajeros = new ArrayList<Pasajero>();
     }
 
-    public Usuario login(){
-        System.out.println("LOGEARSE");
+    public Pasajero loginPasajero(){
         System.out.print("Ingresar DNI: ");
         Scanner scanner = new Scanner(System.in);
         int inputDNI = Integer.parseInt(scanner.nextLine());
         System.out.print("Ingresar contrasenia: ");
         String inputContrasenia = scanner.nextLine();
 
-        Usuario logeado = existeUsuario(inputDNI);
+        Pasajero logeado = existePasajero(inputDNI);
 
         if (logeado != null){
             boolean datosCorrectos = chequearContrasenia(inputDNI, inputContrasenia);
+
             if (datosCorrectos)
                 System.out.println("Logueado");
-            else
+            else {
                 System.out.println("Contrasenia incorrecta");
+                logeado = null;
+            }
         } else {
             System.out.println("No existe un usuario con ese DNI");
-
         }
+
         return logeado;
 
     }
 
     private boolean chequearContrasenia(int inputDNI, String inputContrasenia){
-        for (Usuario u: usuarios){
-            if (u.getDni() == inputDNI)
-                if (u.getClaveAcceso() == inputContrasenia)
+        for (Pasajero pasajero: pasajeros){
+            if (pasajero.getDni() == inputDNI)
+                if (pasajero.getClaveAcceso().equals(inputContrasenia))
                     return true;
                 else
                     return false;
@@ -43,21 +45,25 @@ public class Plataforma {
 
         return false;
     }
-    public boolean registrarse(){
+    public boolean registrarPasajero(){
         System.out.println("Registrarse");
         System.out.print("Ingresar DNI: ");
         Scanner scanner = new Scanner(System.in);
-        int inputDNI = scanner.nextInt();
+        int inputDNI = Integer.parseInt(scanner.nextLine());
 
-        if (existeUsuario(inputDNI) == null){
+        if (existePasajero(inputDNI) == null){
             System.out.print("Ingresar nombre: ");
-            String inputNombre = scanner.nextLine();
-            System.out.print("Ingresar contrasenia: ");
-            String inputContrasenia = scanner.nextLine();
+            Scanner scanner2 = new Scanner(System.in);
+            String inputNombre = scanner2.nextLine();
+
             System.out.print("Ingresar apellido: ");
-            String inputApellido = scanner.nextLine();
-            Usuario aux = new Usuario(inputNombre, inputApellido, inputContrasenia, inputDNI);
-            usuarios.add(aux);
+            String inputApellido = scanner2.nextLine();
+
+            System.out.print("Ingresar contrasenia: ");
+            String inputContrasenia = scanner2.nextLine();
+
+            Pasajero aux = new Pasajero(inputNombre, inputApellido, inputContrasenia, inputDNI);
+            pasajeros.add(aux);
             return true;
 
         } else {
@@ -66,10 +72,10 @@ public class Plataforma {
         }
     }
 
-    public Usuario existeUsuario(int dni){
-        for (Usuario u: usuarios){
-            if (u.getDni() == dni)
-                return u;
+    public Pasajero existePasajero(int dni){
+        for (Pasajero pasajero: pasajeros){
+            if (pasajero.getDni() == dni)
+                return pasajero;
         }
 
         return null;
@@ -85,17 +91,17 @@ public class Plataforma {
         return c1;
     }
 
-    private boolean addUsuario(Usuario usuario){
-        int dniUsuario = usuario.getDni();
+    private boolean addPasajero(Pasajero pasajero){
+        int dniUsuario = pasajero.getDni();
         boolean yaEstaReg = false;
 
-        for (Usuario u: usuarios){
+        for (Usuario u: pasajeros){
             if (u.getDni() == dniUsuario)
                 yaEstaReg = true;
         }
 
         if (!yaEstaReg) {
-            usuarios.add(usuario);
+            pasajeros.add(pasajero);
             return true;
         } else
             return false;

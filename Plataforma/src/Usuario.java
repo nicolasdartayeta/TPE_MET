@@ -1,4 +1,6 @@
-public class Usuario {
+import java.io.Serializable;
+
+public abstract class Usuario implements Serializable {
     private String nombre;
     private String apellido;
     private String claveAcceso;
@@ -8,6 +10,7 @@ public class Usuario {
         this.nombre = nombre;
         this.apellido = apellido;
         this.claveAcceso = claveAcceso;
+        this.dni = dni;
     }
     public String getNombre(){
         return nombre;
