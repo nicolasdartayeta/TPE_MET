@@ -1,4 +1,6 @@
 import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -133,6 +135,9 @@ public class Plataforma {
             };
         } catch (IOException e) {
             try {
+                Path path = Path.of("Plataforma/src/Archivos");
+                Files.createDirectories(path);
+
                 ARCHIVOUSUARIOS.createNewFile();
             } catch (IOException ex) {
                 throw new RuntimeException(ex);
