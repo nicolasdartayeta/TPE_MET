@@ -63,6 +63,7 @@ public class Plataforma {
             String inputContrasenia = scanner2.nextLine();
 
             Pasajero aux = new Pasajero(inputNombre, inputApellido, inputContrasenia, inputDNI);
+            aux.addCredito(1000);
             pasajeros.add(aux);
             return true;
 
