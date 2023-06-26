@@ -51,6 +51,34 @@ public class Plataforma {
         return false;
     }
 
+    private boolean contraseniaValida(String clave){
+        char ch;
+        boolean mayusc = false;
+        boolean minusc= false;
+        boolean num = false;
+        boolean valido = false;
+
+        if (clave.length() > 7){
+            for (int i=0; i< clave.length(); i++){
+                ch = clave.charAt(i);
+                if (Character.isDigit(ch)){
+                    num = true;
+                }
+                else if (Character.isUpperCase(ch)){
+                    mayusc = true;
+                }
+                else if (Character.isLowerCase(ch)){
+                    minusc = true;
+                }
+            }
+        }
+        if (minusc && mayusc && num){
+            valido = true;
+        }
+
+        return valido;
+    }
+
     public boolean registrarPasajero() {
         System.out.println("Registrarse");
         System.out.print("Ingresar DNI: ");
@@ -67,6 +95,12 @@ public class Plataforma {
 
             System.out.print("Ingresar contrasenia: ");
             String inputContrasenia = scanner2.nextLine();
+
+            while (contraseniaValida(inputContrasenia)){
+                System.out.println("Contraseña no valida");
+                System.out.print("Ingresar otra contrasenia: ");
+                inputContrasenia = scanner2.nextLine();
+            }
 
             Pasajero aux = new Pasajero(inputNombre, inputApellido, inputContrasenia, inputDNI);
             aux.addCredito(1000);
