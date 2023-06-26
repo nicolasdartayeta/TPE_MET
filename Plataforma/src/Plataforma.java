@@ -96,7 +96,7 @@ public class Plataforma {
             System.out.print("Ingresar contrasenia: ");
             String inputContrasenia = scanner2.nextLine();
 
-            while (contraseniaValida(inputContrasenia == false)){
+            while (contraseniaValida(inputContrasenia) == false){
                 System.out.println("Contraseña no valida");
                 System.out.print("Ingresar otra contrasenia: ");
                 inputContrasenia = scanner2.nextLine();
