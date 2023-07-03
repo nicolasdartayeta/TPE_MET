@@ -1,4 +1,6 @@
-public class Pasaje {
+import java.io.Serializable;
+
+public class Pasaje implements Serializable {
     private int numeroAsiento;
     private Pasajero pasajero;
     // TODO private Servicio servicio; cuando se implemente servicio

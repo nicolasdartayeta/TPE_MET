@@ -81,4 +81,6 @@ public class Pasajero extends Usuario{
     public void addCredito(int monto){
         this.creditoCompra += monto;
     }
+
+
 }
